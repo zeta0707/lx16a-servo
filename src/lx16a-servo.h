@@ -535,6 +535,15 @@ public:
 		commandOK = _bus->write(LX16A_SERVO_LOAD_OR_UNLOAD_WRITE, params, 1, _id);
 	}
 
+	void led_on() {
+		uint8_t params[] = { 1 };
+		commandOK = _bus->write(LX16A_SERVO_LED_CTRL_WRITE, params, 1, _id);
+	}
+
+	void led_off() {
+		uint8_t params[] = { 1 };
+		commandOK = _bus->write(LX16A_SERVO_LED_CTRL_WRITE, params, 0, _id);
+	}
 	/**
 	 * Command name: SERVO_OR_MOTOR_MODE_WRITE
 	 Command value: 29
@@ -618,7 +627,7 @@ public:
 		commandOK = true;
 		return params[0];
 
-	}	// id_read returns the ID of the servo using its ID for verification
+	}	// id_verify returns the ID of the servo using its ID for verification
 	uint8_t id_verify() {
 		uint8_t params[1];
 		if (!_bus->read(LX16A_SERVO_ID_READ, params, 1, _id)) {
