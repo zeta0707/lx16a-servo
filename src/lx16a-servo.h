@@ -541,8 +541,8 @@ public:
 	}
 
 	void led_off() {
-		uint8_t params[] = { 1 };
-		commandOK = _bus->write(LX16A_SERVO_LED_CTRL_WRITE, params, 0, _id);
+		uint8_t params[] = { 0 };
+		commandOK = _bus->write(LX16A_SERVO_LED_CTRL_WRITE, params, 1, _id);
 	}
 	/**
 	 * Command name: SERVO_OR_MOTOR_MODE_WRITE
